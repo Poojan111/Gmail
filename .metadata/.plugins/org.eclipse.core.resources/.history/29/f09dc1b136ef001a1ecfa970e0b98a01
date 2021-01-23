@@ -1,0 +1,43 @@
+package FIRST.First;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SmallestDifference {
+
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		System.out.print("Input size of 1st Array ");
+		int i=scan.nextInt();
+		System.out.print("Input size of 2st Array ");
+		int j=scan.nextInt();
+		TreeSet<Integer> input1=new TreeSet<Integer>();
+		TreeSet<Integer> input2=new TreeSet<Integer>();
+		for(int k=0;k<i;k++) {
+			int r=scan.nextInt();
+			input1.add(r);
+		}
+		for(int k=0;k<j;k++) {
+			int r=scan.nextInt();
+			input2.add(r);
+		}
+		int secondSmall=0;
+		int small=input2.first();
+		Iterator it=input1.iterator();
+		while(it.hasNext()) {
+			int refer=(Integer) it.next();
+			if(refer>small && secondSmall==0) {
+				secondSmall=refer;
+			}
+		}
+		if(secondSmall-small<0) {
+			System.out.println("Invalid Data, Result is negative!!!!!");
+		}
+		else {
+		System.out.println("Output: Smallest difference: "+(secondSmall-small));
+	}
+	}
+}
